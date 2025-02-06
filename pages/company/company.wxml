@@ -1,0 +1,74 @@
+<!--pages/company/company.wxml-->
+<view class="company-container">
+  <!-- 顶部企业照片 -->
+  <image class="company-banner" src="/assets/images/company.png" mode="aspectFill"></image>
+
+  <!-- Tab切换区域 -->
+  <view class="tab-container">
+    <view class="tab-header">
+      <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+        <text>关于我们</text>
+        <view class="tab-line" wx:if="{{currentTab === 0}}"></view>
+      </view>
+      <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+        <text>优势服务</text>
+        <view class="tab-line" wx:if="{{currentTab === 1}}"></view>
+      </view>
+      <view class="tab-item {{currentTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+        <text>企业风采</text>
+        <view class="tab-line" wx:if="{{currentTab === 2}}"></view>
+      </view>
+    </view>
+
+    <!-- Tab内容区域 -->
+    <swiper class="tab-content" current="{{currentTab}}" bindchange="swiperChange">
+      <swiper-item>
+        <scroll-view scroll-y class="tab-scroll-view">
+          <!-- 企业介绍 -->
+          <view class="about-section">
+            <view class="section-title">企业介绍</view>
+            <view class="company-intro">
+              <text>上海沃行信息技术有限公司是一家专注于让云计算在国际物流业应用的公司。作为上海临港集团重点引进的"高科技航运信息化服务"企业，在毗邻洋山港和自贸区的临港地区投资成立。沃行致力于让"云计算"应用在行业落地实践，我们不喜欢泛泛而谈，我们相信只有将技术与行业经验紧密结合，才能做出有生命力的产品 。</text>
+            </view>
+          </view>
+
+          <!-- 荣誉资质 -->
+          <view class="honor-section">
+            <view class="section-title">荣誉资质</view>
+            <swiper class="cert-swiper" 
+              display-multiple-items="2"
+              next-margin="32rpx"
+              previous-margin="32rpx"
+              circular="{{true}}"
+              autoplay="{{true}}"
+              interval="3000">
+              <swiper-item wx:for="{{certList}}" wx:key="index">
+                <image src="/assets/images/cert{{index + 1}}.png" mode="aspectFit" class="cert-image"></image>
+              </swiper-item>
+            </swiper>
+          </view>
+
+          <!-- 合作伙伴 -->
+          <view class="partner-section">
+            <view class="section-title">合作伙伴</view>
+            <view class="partner-grid">
+              <view class="partner-item" wx:for="{{partnerList}}" wx:key="index">
+                <image src="/assets/images/logo{{index + 1}}.png" mode="scaleToFill" class="partner-logo"></image>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y class="tab-scroll-view">
+          <!-- 优势服务的内容将在这里添加 -->
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y class="tab-scroll-view">
+          <!-- 企业风采的内容将在这里添加 -->
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

@@ -1,0 +1,148 @@
+<!--index.wxml-->
+<view class="custom-navigation-bar">
+  <view class="navigation-bar-content">
+    <text class="navigation-bar-title">上海XX物流</text>
+  </view>
+</view>
+
+<!-- 顶部区域（包含背景banner和搜索框） -->
+<view class="top-section">
+  <!-- Banner背景 -->
+  <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
+    <swiper-item>
+      <image src="/assets/images/banner1.png" mode="aspectFill"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/assets/images/banner2.png" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 搜索框 -->
+  <view class="search-container">
+    <view class="search-box">
+      <input type="text" 
+             placeholder="输入订单号/提单号/箱号跟踪订单" 
+             placeholder-class="placeholder-style"
+             value="{{searchValue}}"
+             bindinput="onSearchInput"
+      />
+      <image class="search-icon" src="/assets/icons/search.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 金刚区 -->
+    <view class="quick-entry">
+      <view class="quick-entry-row">
+        <view class="quick-entry-item" wx:for="{{quickEntryList1}}" wx:key="index">
+          <image src="{{item.icon}}" mode="aspectFit"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 热门运价 -->
+    <view class="section-container price-section">
+      <view class="section-header">
+        <text class="section-title">热门运价</text>
+        <view class="more-btn" bindtap="goToPriceCenter">查看更多</view>
+      </view>
+      <swiper class="price-swiper" 
+        autoplay="{{true}}" 
+        interval="{{4000}}" 
+        duration="{{500}}"
+        circular="{{true}}">
+        <swiper-item wx:for="{{[0,1,2,3,4,5,6,7]}}" wx:key="*this">
+          <view class="price-swiper-item">
+            <view class="price-card">
+              <!-- 添加船公司logo -->
+              <image class="carrier-logo" src="/assets/icons/msclogo.png" mode="aspectFit"></image>
+              
+              <!-- 添加截止时间 -->
+              <text class="expire-date">2025-05-31</text>
+              
+              <!-- 港口信息 -->
+              <view class="port-info">
+                <view class="port-group">
+                  <view class="port">LE HAVRE</view>
+                  <view class="port-date">2025-03-14</view>
+                </view>
+                
+                <!-- 航程天数 -->
+                <view class="route-info">
+                  <view class="route-line"></view>
+                  <text class="route-days">34 Days</text>
+                </view>
+                
+                <view class="port-group">
+                  <view class="port">NANSHA</view>
+                  <view class="port-date">2025-02-05</view>
+                </view>
+              </view>
+
+              <!-- 价格信息 -->
+              <view class="price-info">
+                <view class="price-group">
+                  <text class="price-label">20GP</text>
+                  <view class="price-value">
+                    <text class="price-prefix">$</text>
+                    <text class="price">2,100.00</text>
+                  </view>
+                </view>
+                
+                <view class="price-group">
+                  <text class="price-label">40GP</text>
+                  <view class="price-value">
+                    <text class="price-prefix">$</text>
+                    <text class="price">3,350.00</text>
+                  </view>
+                </view>
+                
+                <view class="price-group">
+                  <text class="price-label">40HC</text>
+                  <view class="price-value">
+                    <text class="price-prefix">$</text>
+                    <text class="price">3,350.00</text>
+                  </view>
+                </view>
+              </view>
+              <view class="card-footer">
+                <view class="service-info">
+                  <text class="service-type">CMA CGC</text>
+                  <text class="voyage-info">017W</text>
+                </view>
+                <text class="valid-date">Service:LL5</text>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <!-- 热门资讯 -->
+    <view class="section-container news-section">
+      <view class="section-header">
+        <text class="section-title">热门资讯</text>
+        <view class="more-btn" bindtap="goToNewsCenter">查看更多</view>
+      </view>
+      <view class="news-list">
+        <view class="news-card" wx:for="{{3}}" wx:key="index">
+          <view class="news-content">
+            <text class="news-title">{{newsList[index].title}}</text>
+            <text class="news-desc">{{newsList[index].desc}}</text>
+          </view>
+          <image class="news-image" src="{{newsList[index].image}}" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 在页面最底部添加 -->
+<movable-area class="movable-area">
+  <movable-view class="movable-view" direction="all" x="{{x}}" y="{{y}}" out-of-bounds="{{false}}" bindchange="onChange">
+    <image class="service-icon" src="/assets/icons/customer.png" mode="aspectFit" bindtap="contactService"/>
+  </movable-view>
+</movable-area>

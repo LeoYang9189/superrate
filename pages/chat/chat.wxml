@@ -1,0 +1,77 @@
+<!-- 顶部导航栏 -->
+<view class="custom-navigation-bar">
+  <view class="navigation-bar-content">
+    <view class="left-actions">
+      <view class="back-icon" bindtap="goBack">
+        <image src="/assets/icons/back.png" mode="aspectFit"></image>
+      </view>
+      <text class="navigation-bar-title">运营演示账号@售前演示环境</text>
+    </view>
+    <view class="right-actions">
+      <image class="more-icon" src="/assets/icons/more.png" mode="aspectFit"></image>
+      <image class="record-icon" src="/assets/icons/record.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+
+<!-- 聊天内容区域 -->
+<scroll-view class="chat-container" scroll-y scroll-into-view="{{scrollToMessage}}" bindscrolltoupper="onScrollToUpper">
+  <!-- 时间戳 -->
+  <view class="timestamp">2024/12/19 23:57</view>
+
+  <!-- 消息内容 -->
+  <view class="message-list">
+    <!-- 对方发送的链接消息 -->
+    <view class="message-item received">
+      <image class="avatar" src="/assets/icons/avatar3.png" mode="aspectFill"></image>
+      <view class="message-content link">
+        http://b2b-demo.walltechsystem.com/#/register?code=873269
+      </view>
+    </view>
+
+    <!-- 对方发送的文本消息 -->
+    <view class="message-item received">
+      <image class="avatar" src="/assets/icons/avatar3.png" mode="aspectFill"></image>
+      <view class="message-content">
+        你好，我现在不在，欢迎留言，一会回复您。
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 底部区域 -->
+<view class="footer">
+  <!-- 快捷功能区 -->
+  <view class="quick-actions">
+    <view class="quick-item">
+      <image class="small-icon" src="/assets/icons/smallquick1.png" mode="aspectFit"></image>
+      <text>特惠活动</text>
+    </view>
+    <view class="quick-item">
+      <image class="small-icon" src="/assets/icons/smallquick2.png" mode="aspectFit"></image>
+      <text>运价查询</text>
+    </view>
+    <view class="quick-item">
+      <image class="small-icon" src="/assets/icons/smallquick3.png" mode="aspectFit"></image>
+      <text>业务跟踪</text>
+    </view>
+    <view class="quick-item">
+      <image class="small-icon" src="/assets/icons/smallquick4.png" mode="aspectFit"></image>
+      <text>订单列表</text>
+    </view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <view class="voice-icon">
+      <image src="/assets/icons/voice.png" mode="aspectFit"></image>
+    </view>
+    <input class="message-input" placeholder="" type="text"/>
+    <view class="emoji-icon">
+      <image src="/assets/icons/emoji.png" mode="aspectFit"></image>
+    </view>
+    <view class="plus-icon">
+      <image src="/assets/icons/plus.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</view> 

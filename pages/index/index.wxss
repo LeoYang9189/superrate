@@ -1,0 +1,599 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #1296db 0%, #FFFFFF 100%);
+  overflow: hidden;  /* 防止页面整体滚动 */
+}
+
+.nav-bar {
+  background: transparent !important;
+}
+
+.nav-bar .weui-navigation-bar {
+  background: transparent !important;
+}
+
+.nav-bar .weui-navigation-bar__inner {
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.nav-bar .weui-navigation-bar__inner .weui-navigation-bar__center {
+  font-size: 32rpx !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  left: 32rpx !important;
+  transform: none !important;
+}
+
+.scrollarea {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: -20rpx;
+  background: #FFFFFF;
+  padding-top: 80rpx;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container {
+  padding: 10rpx 24rpx 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-bottom: 120rpx;
+}
+
+.header {
+  padding: 30rpx 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.content {
+  margin-top: 30rpx;
+}
+
+/* 顶部整体区域 */
+.top-section {
+  position: relative;
+  width: 100%;
+  height: 320rpx;
+  background: #1296db;
+}
+
+/* Banner背景 */
+.banner-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.banner-item {
+  width: 100%;
+  height: 320rpx;  /* 确保与top-section高度一致 */
+}
+
+.banner-image {
+  width: 100%;
+  height: 320rpx;  /* 确保与top-section高度一致 */
+  display: block;
+  object-fit: cover;
+}
+
+/* 导航栏样式 */
+.custom-navigation-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: transparent;
+  padding-top: env(safe-area-inset-top);
+}
+
+.navigation-bar-content {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+}
+
+.navigation-bar-title {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 搜索框 */
+.search-container {
+  position: fixed;
+  top: calc(320rpx - 50rpx);
+  left: 24rpx;
+  right: 24rpx;
+  z-index: 1000;
+}
+
+.search-box {
+  background: #FFFFFF;
+  border-radius: 36rpx;
+  padding: 16rpx 24rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+}
+
+input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.placeholder-style {
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 指示点样式 */
+.wx-swiper-dots {
+  position: relative;
+  left: unset !important;
+  right: 0;
+}
+
+.wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: -20rpx;
+}
+
+/* 金刚区 */
+.quick-entry {
+  background: #FFFFFF;
+  padding: 8rpx 24rpx;
+  margin-top: -10rpx;
+  margin-bottom: 20rpx;  /* 减小底部边距 */
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.02);
+  position: relative;
+  z-index: 2;
+}
+
+.quick-entry-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quick-entry-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  padding: 6rpx 0;  /* 再次减小内边距 */
+}
+
+.quick-entry-item image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 4rpx;  /* 再次减小底部边距 */
+}
+
+.quick-entry-item text {
+  font-size: 22rpx;
+  color: #333;
+  font-weight: normal;
+}
+
+/* 公共section样式 */
+.section-container {
+  background: #FFFFFF;
+  padding: 20rpx 24rpx;
+  margin: 20rpx 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.02);
+  overflow: visible;
+}
+
+/* 运价卡片区域的section容器特殊处理 */
+.section-container:has(.price-swiper) {
+  margin-bottom: 40rpx;  /* 增加底部边距 */
+  padding-bottom: 30rpx;  /* 增加内部底部边距 */
+}
+
+/* 资讯区域的section容器特殊处理 */
+.section-container:has(.news-list) {
+  margin-top: 60rpx;  /* 增加顶部边距 */
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.more-btn {
+  font-size: 24rpx;
+  color: #1296db;
+}
+
+/* 运价卡片区域 */
+.price-swiper {
+  height: 380rpx;  /* 调整为380rpx，为指示点预留空间 */
+  width: 100%;
+  padding-bottom: 30rpx;
+}
+
+.price-swiper-item {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-card {
+  width: 700rpx;
+  height: 330rpx;
+  background: #FFFFFF;  /* 改为纯白色背景 */
+  border-radius: 20rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 修改swiper的默认样式 */
+.price-swiper .wx-swiper-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 8rpx;
+  margin: 0 8rpx;
+}
+
+/* 船公司logo */
+.carrier-logo {
+  position: absolute;
+  top: 24rpx;
+  left: 32rpx;
+  width: 80rpx;  /* 控制logo大小 */
+  height: 40rpx;
+  object-fit: contain;
+}
+
+/* 截止时间显示 */
+.expire-date {
+  position: absolute;
+  top: 24rpx;
+  right: 32rpx;
+  font-size: 22rpx;
+  color: #999999;
+}
+
+/* 港口信息布局 */
+.port-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-top: 40rpx;  /* 减小顶部边距 */
+  margin-bottom: 32rpx;  /* 减小底部边距 */
+}
+
+.port-group {
+  text-align: center;
+}
+
+.port {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.port-date {
+  font-size: 22rpx;
+  color: #666666;
+  margin-top: 4rpx;
+}
+
+/* 航程天数和横线 */
+.route-info {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 240rpx;
+}
+
+.route-line {
+  width: 100%;
+  height: 2rpx;
+  background: #EEEEEE;
+}
+
+.route-days {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22rpx;
+  color: #666666;
+  background: #FFFFFF;
+  padding: 0 16rpx;
+  white-space: nowrap;
+}
+
+/* 价格信息布局 */
+.price-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.price-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4rpx;  /* 减小箱型和价格之间的间距 */
+}
+
+.price-label {
+  font-size: 24rpx;
+  color: #666666;
+  margin-bottom: 4rpx;  /* 减小底部边距 */
+}
+
+.price-value {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-prefix {
+  font-size: 22rpx;
+  color: #FF4D4F;
+}
+
+.price {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #FF4D4F;
+  margin-left: 2rpx;
+}
+
+/* 底部信息 */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24rpx;  /* 减小顶部边距 */
+  padding-top: 12rpx;
+  border-top: 1rpx solid rgba(18, 150, 219, 0.1);
+}
+
+.service-info {
+  display: flex;
+  align-items: center;
+}
+
+.service-type {
+  font-size: 22rpx;
+  color: #1296db;
+  margin-right: 16rpx;
+}
+
+.voyage-info, .valid-date {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+/* 资讯区域 */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 0;
+}
+
+.news-card {
+  display: flex;
+  padding: 24rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.02);
+}
+
+.news-image {
+  width: 200rpx;
+  height: 140rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+  margin-right: 32rpx;  /* 使用margin替代gap，增加间距 */
+}
+
+.news-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rpx 0;
+}
+
+.news-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 2.8em;
+  line-height: 1.4;
+}
+
+.news-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 悬浮客服图标 */
+.movable-area {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;  /* 防止遮挡其他内容 */
+  z-index: 999;
+}
+
+.movable-view {
+  width: 100rpx;
+  height: 100rpx;
+  pointer-events: auto;  /* 允许交互 */
+  position: relative;
+}
+
+.service-icon {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 24rpx;
+  bottom: 120rpx;
+  border-radius: 50%;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  background: #FFFFFF;
+  padding: 10rpx;
+}
+
+/* 移除或替换不支持的属性 */
+.function-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12rpx;  /* 用 margin 替代 gap */
+}
+
+/* 移除 -webkit-mask 相关属性 */
+.back-icon {
+  width: 24rpx;
+  height: 24rpx;
+  border: none;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 热门运价区域 */
+.price-section {
+  margin-top: 70rpx;  /* 增加顶部边距，让整体往下移 */
+  margin-bottom: 100rpx;
+  padding-bottom: 60rpx;
+  position: relative;
+  z-index: 1;
+}
+
+/* 热门资讯区域 */
+.news-section {
+  position: relative;
+  top: 155rpx;
+  margin-bottom: 155rpx;
+}
+
+/* 确保最后一个news-card有足够的底部边距 */
+.news-list .news-card:last-child {
+  margin-bottom: 40rpx;
+}
+
+.banner-swiper {
+  width: 100%;
+  height: 320rpx;
+}
+
+.banner-swiper image {
+  width: 100%;
+  height: 100%;
+}
+
+.news-section {
+  padding: 24rpx;
+  background: #FFFFFF;
+  margin-top: 24rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 24rpx;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.news-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.news-content {
+  flex: 1;
+  margin-right: 24rpx;
+}
+
+.news-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 12rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-desc {
+  font-size: 24rpx;
+  color: #999999;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-image {
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  flex-shrink: 0;
+}

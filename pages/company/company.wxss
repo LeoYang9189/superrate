@@ -1,0 +1,164 @@
+/* pages/company/company.wxss */
+/* 企业页面样式 */
+.company-container {
+  min-height: 100vh;
+  background: #FFFFFF;
+}
+
+/* 顶部企业照片 */
+.company-banner {
+  width: 100%;
+  height: 420rpx;
+  display: block;
+}
+
+/* Tab切换区域 */
+.tab-container {
+  position: relative;
+  background: #FFFFFF;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 88rpx;
+  background: #FFFFFF;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.tab-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.tab-item text {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 88rpx;
+}
+
+.tab-item.active text {
+  color: #1296db;
+  font-weight: 500;
+}
+
+.tab-line {
+  position: absolute;
+  bottom: 0;
+  width: 48rpx;
+  height: 4rpx;
+  background: #1296db;
+  border-radius: 2rpx;
+}
+
+/* Tab内容区域 */
+.tab-content {
+  height: calc(100vh - 508rpx);  /* 减去顶部图片和tab标题的高度 */
+}
+
+.tab-scroll-view {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 24rpx;
+}
+
+/* 关于我们模块样式 */
+.about-section {
+  padding: 32rpx 24rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 24rpx;
+  position: relative;
+  padding-left: 16rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4rpx;
+  height: 24rpx;
+  background: #1296db;
+  border-radius: 2rpx;
+}
+
+.company-intro {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* 荣誉资质轮播图 */
+.honor-section {
+  padding: 32rpx 0;
+  background: #FFFFFF;
+  margin-bottom: 24rpx;
+}
+
+.cert-swiper {
+  height: 240rpx;  /* 减小高度 */
+  padding: 0 24rpx;
+}
+
+.cert-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  object-fit: cover;  /* 确保图片填充满容器并保持比例 */
+}
+
+/* 调整swiper-item的样式以保持4:3比例 */
+.cert-swiper swiper-item {
+  width: 320rpx !important;  /* 减小宽度 */
+  height: 240rpx !important;  /* 保持4:3比例 */
+  padding: 0 16rpx;  /* 增加两侧间距 */
+  box-sizing: border-box;
+}
+
+/* 合作伙伴logo墙 */
+.partner-section {
+  padding: 32rpx 24rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+}
+
+.partner-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16rpx;
+}
+
+.partner-item {
+  width: calc(25% - 24rpx);  /* 4列布局 */
+  height: 140rpx;  /* 固定高度 */
+  margin: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  padding: 12rpx;
+  border: 1rpx solid #EEEEEE;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.partner-logo {
+  width: 80%;
+  height: 80%;
+  background: #FFFFFF;
+}
