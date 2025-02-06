@@ -1,0 +1,78 @@
+<view class="rate-finder">
+  <!-- 自定义导航栏 -->
+  <view class="custom-navigation-bar">
+    <view class="navigation-bar-content">
+      <view class="back-icon" bindtap="onBack">
+        <image src="/assets/icons/back.png" mode="aspectFit"></image>
+      </view>
+      <text class="navigation-bar-title">运价查询</text>
+    </view>
+  </view>
+
+  <!-- 查询表单 -->
+  <view class="search-form">
+    <!-- 起始港 -->
+    <view class="form-item">
+      <text class="label">起始港</text>
+      <view class="port-value" bindtap="showPortPicker" data-type="pol">{{pol}}</view>
+    </view>
+
+    <!-- 目的港 -->
+    <view class="form-item">
+      <text class="label">目的港</text>
+      <view class="port-value {{!pod ? 'placeholder' : ''}}" bindtap="showPortPicker" data-type="pod">
+        {{pod || '请选择目的港'}}
+      </view>
+    </view>
+
+    <!-- 查询按钮 -->
+    <button class="search-btn" bindtap="onSearch">查询</button>
+
+    <!-- 订阅提示 -->
+    <view class="subscribe-tip">
+      <text>实时运价提醒，立即前往</text>
+      <text class="subscribe-link" bindtap="goToSubscribe">订阅运价 ></text>
+    </view>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="history-section">
+    <view class="history-header">
+      <text class="title">历史搜索</text>
+      <text class="clear-btn" bindtap="clearHistory">清除全部</text>
+    </view>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{historyList}}" wx:key="index">
+        <text class="route-text" bindtap="onHistoryTap" data-item="{{item}}">{{item}}</text>
+        <image 
+          class="delete-icon" 
+          src="/assets/icons/trash.png" 
+          mode="aspectFit"
+          catchtap="deleteHistory" 
+          data-index="{{index}}"
+        ></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 港口选择弹窗 -->
+  <view class="port-picker" wx:if="{{showPortPicker}}">
+    <view class="picker-mask" bindtap="hidePortPicker"></view>
+    <view class="picker-content">
+      <view class="picker-header">
+        <text>选择{{pickerType === 'pol' ? '起始港' : '目的港'}}</text>
+        <view class="close-icon" bindtap="hidePortPicker">✕</view>
+      </view>
+      <view class="port-list">
+        <view class="port-item" 
+          wx:for="{{pickerType === 'pol' ? polList : podList}}" 
+          wx:key="*this"
+          bindtap="onPortSelect"
+          data-port="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 
