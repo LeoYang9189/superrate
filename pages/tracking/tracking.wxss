@@ -1,0 +1,137 @@
+/* 页面容器 */
+.tracking {
+  min-height: 100vh;
+  background: #F5F7FA;
+  padding-top: 176rpx;  /* 导航栏高度 + 状态栏高度 */
+}
+
+/* 自定义导航栏 */
+.custom-navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  z-index: 100;
+  padding-top: 88rpx;  /* 状态栏高度 */
+}
+
+.navigation-bar-content {
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+}
+
+.back-icon {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  margin-right: 16rpx;
+}
+
+.back-icon image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.navigation-bar-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* 搜索区域 */
+.search-section {
+  margin: 24rpx;
+  padding: 32rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+}
+
+.input-box {
+  background: #F5F7FA;
+  border-radius: 8rpx;
+  padding: 24rpx;
+}
+
+.input-box input {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.example-text {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.example-number {
+  color: #1296db;
+  text-decoration: underline;
+}
+
+.search-btn {
+  margin-top: 48rpx;
+  background: #1296db;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  border-radius: 8rpx;
+}
+
+/* 历史记录 */
+.history-section {
+  margin: 24rpx;
+  padding: 24rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.history-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.clear-btn {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #EEEEEE;
+  padding-left: 8rpx;
+  padding-right: 8rpx;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.bill-number {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.delete-icon {
+  width: 40rpx;
+  height: 40rpx;
+  padding: 12rpx;
+} 

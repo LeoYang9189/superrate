@@ -1,0 +1,48 @@
+<view class="tracking">
+  <!-- 自定义导航栏 -->
+  <view class="custom-navigation-bar">
+    <view class="navigation-bar-content">
+      <view class="back-icon" bindtap="onBack">
+        <image src="/assets/icons/back.png" mode="aspectFit"></image>
+      </view>
+      <text class="navigation-bar-title">货物跟踪</text>
+    </view>
+  </view>
+
+  <!-- 搜索区域 -->
+  <view class="search-section">
+    <view class="input-box">
+      <input 
+        type="text"
+        placeholder="请输入提单号"
+        value="{{billNumber}}"
+        bindinput="onInputChange"
+      />
+    </view>
+    <view class="example-text">
+      <text>示例单号：</text>
+      <text class="example-number" bindtap="fillExample">SHSE12345678</text>
+    </view>
+    <button class="search-btn" bindtap="onSearch">立即查询</button>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="history-section" wx:if="{{historyList.length > 0}}">
+    <view class="history-header">
+      <text class="history-title">历史记录</text>
+      <text class="clear-btn" bindtap="clearHistory">清除全部</text>
+    </view>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{historyList}}" wx:key="index">
+        <text class="bill-number" bindtap="onHistoryTap" data-number="{{item}}">{{item}}</text>
+        <image 
+          class="delete-icon" 
+          src="/assets/icons/trash.png" 
+          mode="aspectFit"
+          catchtap="deleteHistory" 
+          data-index="{{index}}"
+        ></image>
+      </view>
+    </view>
+  </view>
+</view> 

@@ -4,7 +4,8 @@
     "pages/message/message",
     "pages/chat/chat",
     "pages/company/company",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/tracking/tracking"
   ],
   "window": {
     "backgroundTextStyle": "light",

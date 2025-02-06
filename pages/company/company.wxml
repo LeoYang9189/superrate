@@ -57,6 +57,20 @@
               </view>
             </view>
           </view>
+
+          <view class="verify-status">
+            <image src="/assets/icons/verified.png" mode="aspectFit"></image>
+            <text>已认证</text>
+          </view>
+
+          <view class="nav-item">
+            <text>企业资质</text>
+            <image src="/assets/icons/right.png" mode="aspectFit"></image>
+          </view>
+
+          <view class="company-desc">
+            <text user-select="true">{{companyDesc}}</text>
+          </view>
         </scroll-view>
       </swiper-item>
       <swiper-item>

@@ -11,18 +11,6 @@ Page({
         imageUrl: '/assets/images/banner2.png',
         title: '航空物流'
       },
-      { 
-        imageUrl: '/assets/images/banner3.png',
-        title: '全球贸易'
-      },
-      { 
-        imageUrl: '/assets/images/banner4.png',
-        title: '多式联运'
-      },
-      { 
-        imageUrl: '/assets/images/banner5.png',
-        title: '智慧物流'
-      }
     ],
     quickEntryList1: [
       { icon: '/assets/icons/quick1.png', name: '运价查询' },
@@ -82,10 +70,15 @@ Page({
       this.setData({
         x: windowInfo.windowWidth - 60,
         y: windowInfo.windowHeight - 100,
-        statusBarHeight: appBaseInfo.statusBarHeight
+        statusBarHeight: appBaseInfo.statusBarHeight || 20
       })
     } catch (error) {
       console.error('获取系统信息失败:', error)
+      this.setData({
+        x: 300,
+        y: 500,
+        statusBarHeight: 20
+      })
     }
 
     // 检查所有banner图片并更新加载状态
@@ -146,5 +139,18 @@ Page({
     this.setData({
       searchValue: e.detail.value
     })
+  },
+
+  onQuickNavTap(e) {
+    const index = e.currentTarget.dataset.index;
+    if (index === 0) {  // 运价查询
+      wx.navigateTo({
+        url: '/pages/rate-finder/rate-finder'
+      });
+    } else if (index === 1) {  // 订单跟踪
+      wx.navigateTo({
+        url: '/pages/tracking/tracking'
+      });
+    }
   }
 })
