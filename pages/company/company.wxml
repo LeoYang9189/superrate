@@ -60,13 +60,49 @@
         </scroll-view>
       </swiper-item>
       <swiper-item>
-        <scroll-view scroll-y class="tab-scroll-view">
-          <!-- 优势服务的内容将在这里添加 -->
+        <scroll-view 
+          scroll-y 
+          class="tab-scroll-view"
+          bindscrolltolower="onLoadMore">
+          <!-- 优势服务列表 -->
+          <view class="advantage-list">
+            <view class="advantage-item" wx:for="{{advantageList}}" wx:key="index">
+              <image 
+                src="/assets/images/adv{{index + 1}}.png" 
+                mode="aspectFill" 
+                class="advantage-image">
+              </image>
+              <view class="advantage-content">
+                <text class="advantage-title">{{item.title}}</text>
+                <text class="advantage-desc">{{item.desc}}</text>
+              </view>
+            </view>
+          </view>
         </scroll-view>
       </swiper-item>
       <swiper-item>
-        <scroll-view scroll-y class="tab-scroll-view">
-          <!-- 企业风采的内容将在这里添加 -->
+        <scroll-view scroll-y class="tab-scroll-view" bindscrolltolower="onLoadMore">
+          <view class="timeline-list">
+            <view class="timeline-item" wx:for="{{timelineList}}" wx:key="index">
+              <!-- 时间线 -->
+              <view class="timeline-mark">
+                <view class="timeline-dot"></view>
+                <view class="timeline-line"></view>
+              </view>
+              
+              <!-- 内容区 -->
+              <view class="timeline-content">
+                <view class="timeline-date">{{item.date}}</view>
+                <view class="timeline-title">{{item.title}}</view>
+                <view class="timeline-subtitle">{{item.subtitle}}</view>
+                <image 
+                  class="timeline-image" 
+                  src="/assets/images/fengcai{{index + 1}}.png" 
+                  mode="widthFix">
+                </image>
+              </view>
+            </view>
+          </view>
         </scroll-view>
       </swiper-item>
     </swiper>
