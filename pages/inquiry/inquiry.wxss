@@ -1,0 +1,529 @@
+/* 页面容器 */
+.inquiry {
+  min-height: 100vh;
+  background: #F5F7FA;
+  padding-top: 176rpx;  /* 导航栏高度 + 状态栏高度 */
+}
+
+/* 自定义导航栏 */
+.custom-navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  z-index: 100;
+  padding-top: 88rpx;  /* 状态栏高度 */
+}
+
+.navigation-bar-content {
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+}
+
+.back-icon {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  margin-right: 16rpx;
+}
+
+.back-icon image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.navigation-bar-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* 内容区域 */
+.content {
+  position: absolute;
+  top: 176rpx;  /* 导航栏高度 + 状态栏高度 */
+  left: 0;
+  right: 0;
+  bottom: 136rpx;  /* 底部按钮区域高度 */
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+/* 表单样式 */
+.form-group {
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.group-title {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 24rpx;
+}
+
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 12rpx;
+}
+
+.label.required::after {
+  content: '*';
+  color: #FF4D4F;
+  margin-left: 4rpx;
+}
+
+.input {
+  width: 100%;
+  height: 88rpx;
+  background: #F5F7FA;
+  border-radius: 8rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.input.with-unit {
+  padding-right: 80rpx;
+}
+
+.input-group {
+  position: relative;
+}
+
+.unit {
+  position: absolute;
+  right: 24rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.picker-value {
+  width: 100%;
+  height: 88rpx;
+  background: #F5F7FA;
+  border-radius: 8rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  line-height: 88rpx;
+  box-sizing: border-box;
+  color: #666666;
+}
+
+.picker-value.placeholder {
+  color: #999999;
+}
+
+.container-input {
+  display: flex;
+  gap: 16rpx;
+}
+
+.container-type {
+  flex: 2;
+  height: 88rpx;
+  background: #F5F7FA;
+  border-radius: 8rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  line-height: 88rpx;
+  color: #999999;
+}
+
+.container-count {
+  flex: 1;
+  height: 88rpx;
+  background: #F5F7FA;
+  border-radius: 8rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+/* 底部留白 */
+.bottom-space {
+  height: 48rpx;
+}
+
+/* 固定底部按钮区域 */
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #F5F7FA;
+  padding: 24rpx;
+}
+
+/* 提交按钮 */
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(135deg, #1296db, #0960bd);
+  color: #FFFFFF;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  line-height: 88rpx;
+  box-shadow: 0 8rpx 16rpx rgba(18, 150, 219, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 箱型选择弹窗 */
+.picker-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.picker-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.picker-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FFFFFF;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 24rpx;
+  max-height: 70vh;
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.close-icon {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.picker-list {
+  max-height: calc(70vh - 100rpx);
+  overflow-y: auto;
+}
+
+.picker-item {
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #333333;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.picker-item:last-child {
+  border-bottom: none;
+}
+
+/* 提交成功弹窗 */
+.success-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  position: relative;
+  width: 560rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 48rpx 32rpx;
+  text-align: center;
+}
+
+.success-icon {
+  width: 88rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #1296db;
+  color: #FFFFFF;
+  font-size: 48rpx;
+  border-radius: 50%;
+  margin: 0 auto 24rpx;
+}
+
+.success-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.success-desc {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 8rpx;
+}
+
+.success-tip {
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 32rpx;
+}
+
+.btn-group {
+  display: flex;
+  gap: 16rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.btn.secondary {
+  background: #F5F7FA;
+  color: #666666;
+}
+
+.btn.primary {
+  background: #1296db;
+  color: #FFFFFF;
+}
+
+/* 货好时间选项样式 */
+.ready-time-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.time-option {
+  flex: 1;
+  height: 88rpx;
+  background: #F5F7FA;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #666666;
+  padding: 0 16rpx;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.time-option.active {
+  background: linear-gradient(135deg, #E6F4FF, #F0F9FF);
+  color: #1296db;
+  font-weight: 500;
+  box-shadow: 0 2rpx 8rpx rgba(18, 150, 219, 0.15);
+}
+
+.time-option.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4rpx;
+  background: #1296db;
+  border-radius: 2rpx;
+}
+
+/* 箱型箱量组样式 */
+.container-groups {
+  margin-top: 24rpx;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.add-group {
+  display: flex;
+  align-items: center;
+  color: #1296db;
+  font-size: 28rpx;
+}
+
+.add-group image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+.container-group {
+  margin-bottom: 16rpx;
+  background: #F5F7FA;
+  border-radius: 8rpx;
+  padding: 24rpx;
+}
+
+.group-content {
+  display: flex;
+  align-items: center;
+  gap: 32rpx;
+}
+
+.container-type {
+  flex: 1.2;
+  height: 88rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  line-height: 88rpx;
+  color: #999999;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.counter {
+  flex: 0.8;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.minus, .plus {
+  width: 88rpx;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #1296db;
+  background: #FFFFFF;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.minus:active, .plus:active {
+  background: #F5F7FA;
+}
+
+.minus.disabled {
+  color: #CCCCCC;
+  background: #FFFFFF;
+  cursor: not-allowed;
+}
+
+.count-input {
+  flex: 1;
+  height: 88rpx;
+  text-align: center;
+  font-size: 28rpx;
+  min-width: 80rpx;
+  border-left: 2rpx solid #EEEEEE;
+  border-right: 2rpx solid #EEEEEE;
+  background: #FFFFFF;
+}
+
+.delete-group {
+  width: 88rpx;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8rpx;
+}
+
+.delete-group image {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.delete-group:active image {
+  opacity: 0.6;
+}
+
+/* 呼吸光效果 */
+@keyframes breathing {
+  0% {
+    box-shadow: 0 8rpx 16rpx rgba(18, 150, 219, 0.3);
+  }
+  50% {
+    box-shadow: 0 12rpx 24rpx rgba(18, 150, 219, 0.5);
+  }
+  100% {
+    box-shadow: 0 8rpx 16rpx rgba(18, 150, 219, 0.3);
+  }
+}
+
+.breathing-light {
+  animation: breathing 2s infinite ease-in-out;
+}
+
+/* 禁用的箱型选项 */
+.picker-item.disabled {
+  color: #CCCCCC;
+  background: #F5F7FA;
+}
+
+/* 添加分隔线效果 */
+.minus::after, .plus::after {
+  content: '';
+  position: absolute;
+  width: 2rpx;
+  height: 32rpx;
+  background: #EEEEEE;
+  right: 0;
+}
+
+.plus::after {
+  left: 0;
+  right: auto;
+} 

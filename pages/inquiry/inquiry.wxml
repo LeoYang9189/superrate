@@ -1,0 +1,196 @@
+<view class="inquiry">
+  <!-- 自定义导航栏 -->
+  <view class="custom-navigation-bar">
+    <view class="navigation-bar-content">
+      <view class="back-icon" bindtap="onBack">
+        <image src="/assets/icons/back.png" mode="aspectFit"></image>
+      </view>
+      <text class="navigation-bar-title">快速询价</text>
+    </view>
+  </view>
+
+  <!-- 使用 scroll-view 包裹内容区域 -->
+  <scroll-view class="content" scroll-y>
+    <form bindsubmit="submitForm">
+      <!-- 必填项 -->
+      <view class="form-group">
+        <view class="form-item">
+          <text class="label required">起运地</text>
+          <view class="port-value" bindtap="showPortPicker" data-type="pol">
+            {{formData.fromPort || '请选择起运地'}}
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="label required">目的地</text>
+          <view class="port-value" bindtap="showPortPicker" data-type="pod">
+            {{formData.toPort || '请选择目的地'}}
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="label required">品名</text>
+          <input 
+            class="input" 
+            name="cargoName" 
+            placeholder="请输入货物品名"
+            value="{{formData.cargoName}}"
+          />
+        </view>
+
+        <view class="form-item">
+          <text class="label required">货好时间</text>
+          <view class="ready-time-options">
+            <view 
+              class="time-option {{formData.readyTime === 'now' ? 'active' : ''}}"
+              bindtap="selectReadyTime"
+              data-time="now"
+            >货已经好了</view>
+            <view 
+              class="time-option {{formData.readyTime === 'within2weeks' ? 'active' : ''}}"
+              bindtap="selectReadyTime"
+              data-time="within2weeks"
+            >2周内备好</view>
+            <view 
+              class="time-option {{formData.readyTime === 'after2weeks' ? 'active' : ''}}"
+              bindtap="selectReadyTime"
+              data-time="after2weeks"
+            >2周以上</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 三选一必填项 -->
+      <view class="form-group">
+        <view class="group-title">以下三项请至少填写一项</view>
+        
+        <view class="form-item">
+          <text class="label">毛重</text>
+          <view class="input-group">
+            <input 
+              class="input with-unit" 
+              type="digit"
+              name="weight" 
+              placeholder="请输入毛重"
+              value="{{formData.weight}}"
+            />
+            <text class="unit">KG</text>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <text class="label">体积</text>
+          <view class="input-group">
+            <input 
+              class="input with-unit" 
+              type="digit"
+              name="volume" 
+              placeholder="请输入体积"
+              value="{{formData.volume}}"
+            />
+            <text class="unit">CBM</text>
+          </view>
+        </view>
+
+        <!-- 箱型箱量组 -->
+        <view class="container-groups">
+          <view class="group-header">
+            <text class="label">箱型箱量</text>
+            <view class="add-group" bindtap="addContainerGroup" wx:if="{{containerGroups.length < 5}}">
+              <image src="/assets/icons/add.png" mode="aspectFit"></image>
+              <text>添加箱型</text>
+            </view>
+          </view>
+          
+          <view class="container-group" wx:for="{{containerGroups}}" wx:key="index">
+            <view class="group-content">
+              <view class="container-type" bindtap="showContainerPicker" data-index="{{index}}">
+                {{item.type || '请选择箱型'}}
+              </view>
+              <view class="counter">
+                <view class="minus {{item.count <= 1 ? 'disabled' : ''}}" bindtap="decreaseCount" data-index="{{index}}">-</view>
+                <input 
+                  class="count-input" 
+                  type="number" 
+                  value="{{item.count}}"
+                  bindblur="onCountInput"
+                  data-index="{{index}}"
+                />
+                <view class="plus" bindtap="increaseCount" data-index="{{index}}">+</view>
+              </view>
+              <view class="delete-group" bindtap="deleteContainerGroup" data-index="{{index}}" wx:if="{{containerGroups.length > 1}}">
+                <image src="/assets/icons/remove-container.png" mode="aspectFit"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </form>
+    <!-- 底部留白，确保按钮完全显示 -->
+    <view class="bottom-space"></view>
+  </scroll-view>
+
+  <!-- 固定在底部的按钮 -->
+  <view class="fixed-bottom">
+    <button class="submit-btn breathing-light" form-type="submit">获取报价</button>
+  </view>
+
+  <!-- 港口选择弹窗 -->
+  <view class="picker-popup" wx:if="{{showPortPicker}}">
+    <view class="picker-mask" bindtap="hidePortPicker"></view>
+    <view class="picker-content">
+      <view class="picker-header">
+        <text>选择{{pickerType === 'pol' ? '起运地' : '目的地'}}</text>
+        <view class="close-icon" bindtap="hidePortPicker">✕</view>
+      </view>
+      <view class="picker-list">
+        <view 
+          class="picker-item" 
+          wx:for="{{pickerType === 'pol' ? polList : podList}}" 
+          wx:key="*this"
+          bindtap="selectPort"
+          data-port="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 箱型选择弹窗 -->
+  <view class="picker-popup" wx:if="{{showContainerPicker}}">
+    <view class="picker-mask" bindtap="hideContainerPicker"></view>
+    <view class="picker-content">
+      <view class="picker-header">
+        <text>选择箱型</text>
+        <view class="close-icon" bindtap="hideContainerPicker">✕</view>
+      </view>
+      <view class="picker-list">
+        <view 
+          class="picker-item {{isContainerTypeUsed(item) ? 'disabled' : ''}}" 
+          wx:for="{{containerTypes}}" 
+          wx:key="*this"
+          bindtap="{{!isContainerTypeUsed(item) ? 'selectContainerType' : ''}}"
+          data-type="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提交成功弹窗 -->
+  <view class="success-popup" wx:if="{{showSuccessPopup}}">
+    <view class="popup-mask"></view>
+    <view class="popup-content">
+      <view class="success-icon">✓</view>
+      <view class="success-title">提交成功</view>
+      <view class="success-desc">询价单号：{{inquiryNo}}</view>
+      <view class="success-tip">销售将尽快联络您提供报价</view>
+      <view class="btn-group">
+        <button class="btn secondary" bindtap="viewInquiryList">查看列表</button>
+        <button class="btn primary" bindtap="newInquiry">继续询价</button>
+      </view>
+    </view>
+  </view>
+</view>
