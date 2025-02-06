@@ -8,12 +8,15 @@
 <!-- 顶部区域（包含背景banner和搜索框） -->
 <view class="top-section">
   <!-- Banner背景 -->
-  <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
-    <swiper-item>
-      <image src="/assets/images/banner1.png" mode="aspectFill"></image>
-    </swiper-item>
-    <swiper-item>
-      <image src="/assets/images/banner2.png" mode="aspectFill"></image>
+  <swiper class="banner-swiper" 
+    indicator-dots="{{true}}" 
+    autoplay="{{true}}" 
+    interval="3000" 
+    duration="500"
+    circular="{{true}}"
+  >
+    <swiper-item wx:for="{{bannerList}}" wx:key="index">
+      <image src="{{item.imageUrl}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
 
@@ -36,7 +39,12 @@
     <!-- 金刚区 -->
     <view class="quick-entry">
       <view class="quick-entry-row">
-        <view class="quick-entry-item" wx:for="{{quickEntryList1}}" wx:key="index">
+        <view class="quick-entry-item" 
+          wx:for="{{quickEntryList1}}" 
+          wx:key="index"
+          data-index="{{index}}"
+          bindtap="onQuickNavTap"
+        >
           <image src="{{item.icon}}" mode="aspectFit"></image>
           <text>{{item.name}}</text>
         </view>
