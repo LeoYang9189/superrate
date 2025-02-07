@@ -5,6 +5,8 @@
     "pages/chat/chat",
     "pages/company/company",
     "pages/profile/profile",
+    "pages/inquiry/inquiry",
+    "pages/rate-finder/rate-finder",
     "pages/tracking/tracking"
   ],
   "window": {
@@ -42,24 +44,25 @@
       {
         "pagePath": "pages/message/message",
         "text": "消息",
-        "iconPath": "./assets/icons/message.png",
-        "selectedIconPath": "./assets/icons/message-active.png"
+        "iconPath": "assets/icons/message.png",
+        "selectedIconPath": "assets/icons/message-active.png"
       },
       {
         "pagePath": "pages/company/company",
         "text": "企业",
-        "iconPath": "./assets/icons/company.png",
-        "selectedIconPath": "./assets/icons/company-active.png"
+        "iconPath": "assets/icons/company.png",
+        "selectedIconPath": "assets/icons/company-active.png"
       },
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",
-        "iconPath": "./assets/icons/profile.png",
-        "selectedIconPath": "./assets/icons/profile-active.png"
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
       }
     ]
   },
   "resolveAlias": {
     "/*": "/*"
-  }
+  },
+  "usingComponents": {}
 }
